@@ -1,0 +1,54 @@
+.table {
+  tr {
+    display: flex;
+  }
+  td {
+    width: 200px;
+    height: 30px;
+    justify-content: center;
+    display: flex;
+  }
+  th {
+    width: 200px;
+    height: 30px;
+    justify-content: center;
+    display: flex;
+  }
+  td:not(:last-child) {
+    padding-right: 10px;
+  }
+  tr:not(:last-child) {
+    td {
+      padding-bottom: 10px;
+    }
+  }
+}
+
+.radio {
+  margin-bottom: 10px;
+
+  div {
+    display: flex;
+    align-items: center;
+    padding: 0 5px;
+  }
+
+  div:not(:last-child) {
+    margin-bottom: 5px;
+  }
+
+  input {
+    margin-right: 5px;
+  }
+}
+
+.filter {
+  margin-bottom: 20px;
+  input {
+    width: 150px;
+    margin-right: 10px;
+  }
+  button {
+    width: 70px;
+  }
+}
