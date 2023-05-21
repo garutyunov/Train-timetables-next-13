@@ -24,22 +24,19 @@ async function getTrains(station: Stations) {
   }
 
   return {
-    arrivals: arrivalsRes.stationboard.map((train, index) => {
-      const date = train.stop.prognosis.arrival;
-      return {
-        date: date ? new Date(date).toLocaleString() : null,
+    arrivals: arrivalsRes.stationboard
+      .filter((train) => train.stop.prognosis.arrival)
+      .map((train, index) => ({
+        date: new Date(train.stop.prognosis.arrival).toLocaleString(),
         destination: train.to,
         id: index
-      };
-    }),
-    departures: departuresRes.stationboard.map((train, index) => {
-      const date = train.stop.departure;
-      return {
-        date: date ? new Date(date).toLocaleString() : null,
-        destination: train.to,
-        id: index
-      };
-    })
+      })),
+    departures: departuresRes.stationboard
+      .filter((train) => train.stop.prognosis.departure)
+      .map((train) => ({
+        date: new Date(train.stop.prognosis.departure).toLocaleString(),
+        destination: train.to
+      }))
   };
 }
 
@@ -57,6 +54,7 @@ export default async function TrainsPage({ params }: Props) {
     return null;
   }
 
+  // Server Actions
   async function applyFilter(data: FormData) {
     'use server';
 
@@ -65,6 +63,7 @@ export default async function TrainsPage({ params }: Props) {
   }
 
   let { arrivals, departures } = await getTrains(params.station);
+
   if (filter) {
     arrivals = arrivals.filter((train) => train.destination.includes(filter));
     departures = departures.filter((train) =>

@@ -8,6 +8,7 @@ type Props = {
   type: TableType.ARRIVALS | TableType.DEPARTURES;
   onChangeTypeTrains: (e: ChangeEvent<HTMLInputElement>) => void;
 };
+
 const TypeTrainControl = ({ type, onChangeTypeTrains }: Props) => (
     <div className={styles.radio}>
       <div>
