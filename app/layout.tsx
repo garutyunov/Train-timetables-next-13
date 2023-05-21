@@ -2,7 +2,6 @@ import './globals.css';
 import { Roboto } from 'next/font/google';
 import Link from 'next/link';
 import styles from './page.module.scss';
-import { StationsEnum } from '../types/types';
 import routes from '../constants/routes';
 
 const roboto = Roboto({
@@ -26,14 +25,8 @@ export default function RootLayout({
         <main className={styles.main}>
           <nav>
             <Link href="/">Home</Link>
-            <Link href={{ pathname: `${routes.trains}/${StationsEnum.BASEL}` }}>
-              Basel
-            </Link>
-            <Link
-              href={{ pathname: `${routes.trains}/${StationsEnum.GENEVA}` }}
-            >
-              Geneva
-            </Link>
+            <Link href={{ pathname: `${routes.arrivalBasel}` }}>Basel</Link>
+            <Link href={{ pathname: `${routes.arrivalGeneva}` }}>Geneva</Link>
           </nav>
           {children}
         </main>

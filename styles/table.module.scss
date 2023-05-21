@@ -23,32 +23,3 @@
     }
   }
 }
-
-.radio {
-  margin-bottom: 10px;
-
-  div {
-    display: flex;
-    align-items: center;
-    padding: 0 5px;
-  }
-
-  div:not(:last-child) {
-    margin-bottom: 5px;
-  }
-
-  input {
-    margin-right: 5px;
-  }
-}
-
-.filter {
-  margin-bottom: 20px;
-  input {
-    width: 150px;
-    margin-right: 10px;
-  }
-  button {
-    width: 70px;
-  }
-}

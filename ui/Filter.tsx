@@ -1,4 +1,4 @@
-import styles from './trains.module.scss';
+import styles from '../styles/filter.module.scss';
 
 type Props = {
   applyFilter: (data: FormData) => void;

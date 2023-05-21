@@ -1,22 +1,30 @@
 'use client';
 
-import { ChangeEvent } from 'react';
-import styles from './trains.module.scss';
-import { TableType } from '../../../types/types';
+import {usePathname, useRouter} from 'next/navigation';
+import styles from '../styles/radio.module.scss';
 
-type Props = {
-  type: TableType.ARRIVALS | TableType.DEPARTURES;
-  onChangeTypeTrains: (e: ChangeEvent<HTMLInputElement>) => void;
-};
 
-const TypeTrainControl = ({ type, onChangeTypeTrains }: Props) => (
+const TypeTrainControl = () => {
+  const inverted = {
+    arrivals: 'departures',
+    departures: 'arrivals'
+  }
+  const router = useRouter();
+  const pathname = usePathname();
+  const onChangeTypeTrains = (event) => {
+    const path = pathname.replace(inverted[event.currentTarget.value], event.currentTarget.value)
+    router.push(path);
+  };
+
+  const isArrivals = pathname.includes('/arrivals');
+  return (
     <div className={styles.radio}>
       <div>
         <input
           id="arrivals"
           type="checkbox"
           value="arrivals"
-          checked={type === TableType.ARRIVALS}
+          checked={isArrivals}
           name="station"
           onChange={onChangeTypeTrains}
         />
@@ -27,7 +35,7 @@ const TypeTrainControl = ({ type, onChangeTypeTrains }: Props) => (
           id="departures"
           type="checkbox"
           value="departures"
-          checked={type === TableType.DEPARTURES}
+          checked={!isArrivals}
           name="station"
           onChange={onChangeTypeTrains}
         />
@@ -35,5 +43,6 @@ const TypeTrainControl = ({ type, onChangeTypeTrains }: Props) => (
       </div>
     </div>
   );
+};
 
 export default TypeTrainControl;

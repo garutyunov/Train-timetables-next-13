@@ -1,7 +1,5 @@
-'use client';
-
-import {Train} from "../../../types/types";
-import styles from "./trains.module.scss";
+import {Train} from "../types/types";
+import styles from "../styles/table.module.scss";
 
 type Props = {
   trains: Train[]
