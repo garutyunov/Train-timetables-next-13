@@ -25,7 +25,7 @@ export default function RootLayout({
       <body className={roboto.className}>
         <main className={styles.main}>
           <nav>
-            <Link href="/">Home </Link>
+            <Link href="/">Home</Link>
             <Link href={{ pathname: `${routes.trains}/${StationsEnum.BASEL}` }}>
               Basel
             </Link>
